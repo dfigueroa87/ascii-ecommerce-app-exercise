@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="asciiApp">
     <head>
         <title>Discount Ascii Warehouse</title>
+        <!-- Dependencies -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
+        <script src="node_modules/angulargrid/angulargrid.js"></script>
+        <!-- Code -->
+        <script src="scripts/services/apiService.js"></script>
+        <script src="app.js"></script>
+        <script src="scripts/controllers/gridController.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     </head>
     <body>
         <header>
@@ -12,8 +21,25 @@
             <p>But first, a word from our sponsors:</p> <script>document.write('<img class="ad" src="/ad/?r=' + Math.floor(Math.random()*1000) + '"/>');</script>
         </header>
 
-        <section class="products">
-            ... products go here ...
+        <section class="products" ng-controller="gridController">
+          <div class="dynamic-grid"
+            angular-grid="products"
+            grid-no="1"
+            gutter-size="10"
+            angular-grid-id="gallery"
+            refresh-on-img-load="false"
+            ag-infinite-scroll="loadMore()">
+            <div data-ng-repeat="product in products" class="grid">
+              <div class="grid-img" >
+                <div>Id: {{product.id}}</div>
+                <div ng-style="{'font-size':product.size+'px'}">{{product.face}}</div>
+                <div>Size: {{product.size}}</div>
+                <div>Price: {{product.price}}</div>
+                <div>Date: {{product.date}}</div>
+              </div>
+            </div>
+          </div>
+          <div ng-show="end" class="end">END OF THE CATALOGUE</div>
         </section>
     </body>
 </html>
