@@ -8,6 +8,7 @@ const app = angular.module('asciiApp', [
 app.constant('constants', {
   pageSize: 20,
   defaultSort: 'id',
+  sortOptions: ['id', 'price', 'size'],
   modAds: 16,
 });
 

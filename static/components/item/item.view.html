@@ -1,0 +1,9 @@
+<div class="grid-img" ng-if="::!$ctrl.product.ad">
+  <div ng-style="::{'font-size':$ctrl.product.size+'px'}">{{::$ctrl.product.face}}</div>
+  <br />
+  <div>Id: {{::$ctrl.product.id}}</div>
+  <div>Size: {{::$ctrl.product.size}}px</div>
+  <div>Price: {{::$ctrl.product.price / 100 | currency:'$':2}}</div>
+  <div>Uploaded: {{::$ctrl.product.date | date}}</div>
+</div>
+<img ng-if="::$ctrl.product.ad" class="ad" ng-src="/ad/?r={{::$ctrl.product.random}}" />

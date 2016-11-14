@@ -2,12 +2,12 @@
 
 const APIService = angular.module('APIService', ['ngResource']);
 
-APIService.factory('productsService', ['$resource',
-  function($resource) {
+APIService.factory('productsService', ['$resource', 'constants',
+  function($resource, constants) {
     let url = '/api/products';
     return $resource(url, {
       /* Default params */
-      limit: 20,
+      limit: constants.pageSize,
     }, {
       getProducts: {
         method: 'GET',
