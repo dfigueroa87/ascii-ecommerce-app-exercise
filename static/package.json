@@ -1,0 +1,17 @@
+{
+  "name": "discount-ascii-warehouse-fe",
+  "private": true,
+  "version": "1.0.0",
+  "description": "For all your ascii needs.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Figueroa",
+  "license": "",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angulargrid": "^0.6.3",
+    "moment": "^2.15.2"
+  }
+}

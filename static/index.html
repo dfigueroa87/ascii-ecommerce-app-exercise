@@ -1,19 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="asciiApp">
     <head>
         <title>Discount Ascii Warehouse</title>
+        <!-- Dependencies -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="node_modules/angulargrid/angulargrid.min.js"></script>
+        <script src="node_modules/moment/min/moment.min.js"></script>
+        <!-- Code -->
+        <script src="common/apiService/apiService.factory.js"></script>
+        <script src="app.js"></script>
+        <script src="common/dateFilter/date.filter.js"></script>
+        <script src="components/grid/grid.controller.js"></script>
+        <script src="components/item/item.component.js"></script>
+        <script src="common/infiniteScroll/infiniteScroll.directive.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     </head>
     <body>
         <header>
             <h1>Discount Ascii Warehouse</h1>
-
             <p>Here you're sure to find a bargain on some of the finest ascii available to purchase. Be sure to peruse our selection of ascii faces in an exciting range of sizes and prices.</p>
-
             <p>But first, a word from our sponsors:</p> <script>document.write('<img class="ad" src="/ad/?r=' + Math.floor(Math.random()*1000) + '"/>');</script>
         </header>
 
-        <section class="products">
-            ... products go here ...
+        <section class="products" ng-controller="asciiGridController">
+          <div class="sort-btns">
+            <span>Sort By: </span>
+            <div class="btn-group">
+              <button class="btn btn-default text-capitalize" ng-repeat="option in sortOptions" ng-click="sortBy(option)" ng-class="{active: option === currentSort}">{{::option}}</button>
+            </div>
+          </div>
+          <div ascii-infinite-scroll="loadMore()">
+            <div class="dynamic-grid"
+              angular-grid="products"
+              ag-grid-no="1"
+              ag-gutter-size="10"
+              ag-id="gallery">
+              <div data-ng-repeat="product in products" class="grid">
+                <ascii-item product="product"></ascii-item>
+              </div>
+              <div ng-show="loading" class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
+            </div>
+          </div>
+          <div ng-show="end" class="end">
+            <span>~ end of catalogue ~</span>
+          </div>
         </section>
     </body>
 </html>
