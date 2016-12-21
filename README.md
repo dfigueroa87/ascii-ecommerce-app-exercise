@@ -43,3 +43,10 @@ FAQ
 
 Start with `npm start`. The server will look for any files you add to the `static/` directory.
 
+TO DO
+----
+
+ - js error: Cannot read property 'then' of undefined
+ - scrolling too quickly causes an angular error: [ngRepeat:dupes]
+ - race condition when changing sort, so we get mixed results
+ - better modularization.
