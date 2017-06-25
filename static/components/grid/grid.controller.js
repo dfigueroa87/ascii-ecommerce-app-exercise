@@ -56,7 +56,7 @@ angular.module('asciiApp').controller('asciiGridController', ['$scope', 'product
     });
 
     $scope.loadMore = () => {
-      if ($scope.end) return;
+      if ($scope.end || !buffer) return;
       buffer.then(nextPageData => {
         if (!nextPageData.length) {
           $scope.loading = false;
