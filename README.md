@@ -46,6 +46,5 @@ Start with `npm start`. The server will look for any files you add to the `stati
 TO DO
 ----
 
- - scrolling too quickly causes an angular error: [ngRepeat:dupes]
  - race condition when changing sort, so we get mixed results
  - better modularization.

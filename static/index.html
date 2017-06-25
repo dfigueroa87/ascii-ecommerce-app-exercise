@@ -37,7 +37,7 @@
               ag-grid-no="1"
               ag-gutter-size="10"
               ag-id="gallery">
-              <div data-ng-repeat="product in products" class="grid">
+              <div data-ng-repeat="product in products track by $index" class="grid">
                 <ascii-item product="product"></ascii-item>
               </div>
               <div ng-show="loading" class="spinner">
